@@ -2,8 +2,8 @@
     width: 100%;
     height: 40rem;
     margin-top: 2rem;
-   
-    background: #f3f3f3;
+    box-shadow: 1px 1px 6px #dad7d7;
+    background: #f6f6f6;
     display: flex;
 
     @include mobile {

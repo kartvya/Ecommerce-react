@@ -59,6 +59,7 @@ const AppRouter = () => (
         />
         <Route
           component={view.ViewProduct}
+          exact
           path={ROUTES.VIEW_PRODUCT}
         />
         <ClientRoute
@@ -91,6 +92,10 @@ const AppRouter = () => (
         <AdminRoute
           component={view.Products}
           path={ROUTES.ADMIN_PRODUCTS}
+        />
+        <AdminRoute
+          component={view.Users}
+          path={ROUTES.ADMIN_USERS}
         />
         <AdminRoute
           component={view.AddProduct}

@@ -24,7 +24,7 @@ const useProduct = (id) => {
 
             if (didMount) {
               setProduct(data);
-              setLoading(false);
+              // setLoading(false);
             }
           } else {
             setError('Product not found.');
