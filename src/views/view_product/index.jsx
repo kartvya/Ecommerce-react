@@ -52,8 +52,6 @@ const ViewProduct = () => {
     addToBasket({ ...product, selectedColor, selectedSize: selectedSize || product.sizes[0] });
   };
 
-  console.log("kklkl", product)
-
   return (
     <main className="content">
       {isLoading && (
