@@ -119,14 +119,14 @@ ProductItem.propTypes = {
     maxQuantity: PropType.number,
     description: PropType.string,
     keywords: PropType.arrayOf(PropType.string),
-    imageCollection: PropType.arrayOf(PropType.object),
-    sizes: PropType.arrayOf(PropType.string),
+    imageCollection: PropType.arrayOf(PropType.string),
+    // sizes: PropType.arrayOf(PropType.string),
     image: PropType.string,
     imageUrl: PropType.string,
     isFeatured: PropType.bool,
     isRecommended: PropType.bool,
     dateAdded: PropType.number,
-    availableColors: PropType.arrayOf(PropType.string)
+    // availableColors: PropType.arrayOf(PropType.string)
   }).isRequired
 };
 

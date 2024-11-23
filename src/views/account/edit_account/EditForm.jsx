@@ -38,12 +38,12 @@ const EditForm = ({ isLoading, authProvider }) => {
         component={CustomInput}
         style={{ textTransform: 'capitalize' }}
       />
-      <CustomMobileInput
+      {/* <CustomMobileInput
         defaultValue={values.mobile}
         name="mobile"
         disabled={isLoading}
         label="Mobile Number (Will be used for checkout)"
-      />
+      /> */}
       <br />
       <div className="edit-user-action">
         <button

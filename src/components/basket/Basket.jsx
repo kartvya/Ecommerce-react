@@ -53,7 +53,7 @@ const Basket = () => {
       dispatch(clearBasket());
     }
   };
-
+  console.log({basket})
   return user && user.role === 'ADMIN' ? null : (
     <Boundary>
       <Modal

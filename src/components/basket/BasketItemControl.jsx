@@ -18,6 +18,7 @@ const BasketItemControl = ({ product }) => {
       dispatch(minusQtyItem(product.id));
     }
   };
+  console.log({productInBB:product})
 
   return (
     <div className="basket-item-control">
@@ -54,12 +55,12 @@ BasketItemControl.propTypes = {
     selectedSize: PropType.string,
     selectedColor: PropType.string,
     imageCollection: PropType.arrayOf(PropType.string),
-    sizes: PropType.arrayOf(PropType.number),
+    // sizes: PropType.arrayOf(PropType.number),
     image: PropType.string,
     imageUrl: PropType.string,
     isFeatured: PropType.bool,
     isRecommended: PropType.bool,
-    availableColors: PropType.arrayOf(PropType.string)
+    // availableColors: PropType.arrayOf(PropType.string)
   }).isRequired
 };
 

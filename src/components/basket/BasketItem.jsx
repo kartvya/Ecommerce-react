@@ -10,8 +10,8 @@ import { removeFromBasket } from '@/redux/actions/basketActions';
 
 const BasketItem = ({ product }) => {
   const dispatch = useDispatch();
-  const onRemoveFromBasket = () => dispatch(removeFromBasket(product.id));
-
+  const onRemoveFromBasket = () => dispatch(removeFromBasket(product?.id));
+console.log({product})
   return (
     <div className="basket-item">
       <BasketItemControl product={product} />
@@ -45,7 +45,7 @@ const BasketItem = ({ product }) => {
             <div>
               <span className="spec-title">Color</span>
               <div style={{
-                backgroundColor: product.selectedColor || product.availableColors[0],
+                // backgroundColor: product.selectedColor || product.availableColors[0],
                 width: '15px',
                 height: '15px',
                 borderRadius: '50%'
@@ -82,12 +82,12 @@ BasketItem.propTypes = {
     selectedSize: PropType.string,
     selectedColor: PropType.string,
     imageCollection: PropType.arrayOf(PropType.string),
-    sizes: PropType.arrayOf(PropType.number),
+    // sizes: PropType.arrayOf(PropType.number),
     image: PropType.string,
     imageUrl: PropType.string,
     isFeatured: PropType.bool,
     isRecommended: PropType.bool,
-    availableColors: PropType.arrayOf(PropType.string)
+    // availableColors: PropType.arrayOf(PropType.string)
   }).isRequired
 };
 

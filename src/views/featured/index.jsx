@@ -6,7 +6,7 @@ import bannerImg from '@/images/featured.avif';
 import React from 'react';
 
 const FeaturedProducts = () => {
-  useDocumentTitle('Featured Products | Salinaka');
+  useDocumentTitle('Featured Products');
   useScrollTop();
 
   const {

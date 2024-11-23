@@ -149,7 +149,7 @@ const ViewProduct = () => {
             </div>
             {errorFeatured && !isLoadingFeatured ? (
               <MessageDisplay
-                message={error}
+                message={errorFeatured}
                 action={fetchRecommendedProducts}
                 buttonLabel="Try Again"
               />
