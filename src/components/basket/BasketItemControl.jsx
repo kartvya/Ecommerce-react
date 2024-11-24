@@ -18,7 +18,6 @@ const BasketItemControl = ({ product }) => {
       dispatch(minusQtyItem(product.id));
     }
   };
-  console.log({productInBB:product})
 
   return (
     <div className="basket-item-control">

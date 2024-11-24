@@ -21,21 +21,21 @@ const UserAccount = () => {
 
   return (
     <UserTab>
-      <div index={0} label="Account">
+      <div label="Account">
         <Suspense fallback={<Loader />}>
           <UserAccountTab />
         </Suspense>
       </div>
-      <div index={1} label="My Wish List">
+      {/* <div index={1} label="My Wish List">
         <Suspense fallback={<Loader />}>
           <UserWishListTab />
         </Suspense>
-      </div>
-      <div index={2} label="My Orders">
+      </div> */}
+      {/* <div index={2} label="My Orders">
         <Suspense fallback={<Loader />}>
           <UserOrdersTab />
         </Suspense>
-      </div>
+      </div> */}
     </UserTab>
   );
 };

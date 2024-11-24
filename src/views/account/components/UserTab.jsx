@@ -3,31 +3,31 @@ import React, { useState } from 'react';
 
 const UserTab = (props) => {
   const { children } = props;
-  const [activeTab, setActiveTab] = useState(children[0].props.index || 0);
-  const onClickTabItem = (index) => setActiveTab(index);
+  // const [activeTab, setActiveTab] = useState(children[0].props.index || 0);
+  // const onClickTabItem = (index) => setActiveTab(index);
 
   return (
     <div className="user-tab">
       <div className="user-tab-nav">
         <ul className="user-tab-menu">
-          {children.map((child) => (
+          {/* {children.map((child) => ( */}
             <li
-              className={`user-tab-item ${child.props.index === activeTab ? 'user-tab-active' : ''}`}
-              key={child.props.label}
+              className={`user-tab-item user-tab-active`}
+              key={children.props.label}
               role="presentation"
-              onClick={() => onClickTabItem(child.props.index)}
+              // onClick={() => onClickTabItem(child.props.index)}
             >
-              {child.props.label}
+              {children.props.label}
             </li>
-          ))}
+          {/* ))} */}
         </ul>
       </div>
       <div className="user-tab-content">
-        {children.map((child) => {
-          if (child.props.index !== activeTab) return null;
+        {/* {children.map((child) => { */}
+          {/* if (child.props.index !== activeTab) return null; */}
 
-          return child.props.children;
-        })}
+          {children.props.children}
+        {/* })} */}
       </div>
     </div>
   );

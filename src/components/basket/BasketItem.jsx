@@ -11,7 +11,7 @@ import { removeFromBasket } from '@/redux/actions/basketActions';
 const BasketItem = ({ product }) => {
   const dispatch = useDispatch();
   const onRemoveFromBasket = () => dispatch(removeFromBasket(product?.id));
-console.log({product})
+
   return (
     <div className="basket-item">
       <BasketItemControl product={product} />
