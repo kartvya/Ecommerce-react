@@ -4,12 +4,12 @@ import {
   SET_AUTH_PERSISTENCE,
   SIGNIN, SIGNIN_WITH_FACEBOOK,
   SIGNIN_WITH_GITHUB, SIGNIN_WITH_GOOGLE,
-  SIGNOUT, SIGNUP
+  SIGNOUT, SIGNUP, GET_USERS
 } from '@/constants/constants';
 import { SIGNIN as ROUTE_SIGNIN } from '@/constants/routes';
 import defaultAvatar from '@/images/defaultAvatar.jpg';
 import defaultBanner from '@/images/defaultBanner.jpg';
-import { call, put } from 'redux-saga/effects';
+import { call, put, select } from 'redux-saga/effects';
 import { signInSuccess, signOutSuccess } from '@/redux/actions/authActions';
 import { clearBasket, setBasketItems } from '@/redux/actions/basketActions';
 import { resetCheckout } from '@/redux/actions/checkoutActions';
@@ -18,6 +18,8 @@ import { setAuthenticating, setAuthStatus } from '@/redux/actions/miscActions';
 import { clearProfile, setProfile } from '@/redux/actions/profileActions';
 import { history } from '@/routers/AppRouter';
 import firebase from '@/services/firebase';
+import { setRequestStatus } from '@/redux/actions/miscActions';
+import { getUsersSuccess } from '@/redux/actions/userActions';
 
 function* handleError(e) {
   const obj = { success: false, type: 'auth', isError: true };
@@ -198,6 +200,29 @@ function* authSaga({ type, payload }) {
       }
       break;
     }
+
+    case GET_USERS:
+      try {
+        yield initRequest();
+        const state = yield select();
+        const result = yield call(firebase.getUsers, payload);
+
+        if (result.users.length === 0) {
+          handleError('No user found.');
+        } else {
+          yield put(getUsersSuccess({
+            users: result.users,
+            lastKey: result.lastKey ? result.lastKey : state.users.lastRefKey,
+            total: result.total ? result.total : state.users.total
+          }));
+          yield put(setRequestStatus(''));
+        }
+      } catch (e) {
+        console.log(e);
+        yield handleError(e);
+      }
+      break;
+
     default: {
       throw new Error('Unexpected Action Type.');
     }

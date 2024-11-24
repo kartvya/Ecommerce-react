@@ -36,10 +36,10 @@ const Basket = () => {
 
   const onCheckOut = () => {
     if ((basket.length !== 0 && user)) {
-      displayActionMessage('Order placed', 'success');
+      // displayActionMessage('Order placed', 'success');
       document.body.classList.remove('is-basket-open');
-      onClearBasket()
-      // history.push(CHECKOUT_STEP_1);
+      // onClearBasket()
+      history.push(CHECKOUT_STEP_1);
     } else {
       displayActionMessage('Erro in placing order', 'error');
       onOpenModal();
