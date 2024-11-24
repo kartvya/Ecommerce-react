@@ -9,6 +9,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { clearBasket } from '@/redux/actions/basketActions';
+import { displayActionMessage } from '@/helpers/utils';
 
 const Basket = () => {
   const { isOpenModal, onOpenModal, onCloseModal } = useModal();
@@ -35,9 +36,12 @@ const Basket = () => {
 
   const onCheckOut = () => {
     if ((basket.length !== 0 && user)) {
+      displayActionMessage('Order placed', 'success');
       document.body.classList.remove('is-basket-open');
-      history.push(CHECKOUT_STEP_1);
+      onClearBasket()
+      // history.push(CHECKOUT_STEP_1);
     } else {
+      displayActionMessage('Erro in placing order', 'error');
       onOpenModal();
     }
   };
@@ -53,7 +57,7 @@ const Basket = () => {
       dispatch(clearBasket());
     }
   };
-  console.log({basket})
+
   return user && user.role === 'ADMIN' ? null : (
     <Boundary>
       <Modal

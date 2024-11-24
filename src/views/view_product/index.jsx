@@ -21,6 +21,8 @@ const ViewProduct = () => {
   useScrollTop();
   useDocumentTitle(`View ${product?.name || 'Item'}`);
 
+  const itemOnBasket = isItemOnBasket ? isItemOnBasket(product.id) : false;
+
   const [selectedImage, setSelectedImage] = useState(product?.image || '');
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
@@ -49,7 +51,8 @@ const ViewProduct = () => {
   };
 
   const handleAddToBasket = () => {
-    addToBasket({ ...product, selectedColor, selectedSize: selectedSize || product.sizes[0] });
+    if (addToBasket) addToBasket({ ...product});
+    // addToBasket({ ...product, selectedColor, selectedSize: selectedSize || product.sizes[0] });
   };
 
   return (
@@ -133,11 +136,11 @@ const ViewProduct = () => {
               <h1>{displayMoney(product.price)}</h1>
               <div className="product-modal-action">
                 <button
-                  className={`button button-small ${isItemOnBasket(product.id) ? 'button-border button-border-gray' : ''}`}
+                  className={`button button-small ${itemOnBasket ? 'button-border button-border-gray' : ''}`}
                   onClick={handleAddToBasket}
                   type="button"
                 >
-                  {isItemOnBasket(product.id) ? 'Remove From Basket' : 'Add To Basket'}
+                  {itemOnBasket ? 'Remove From Basket' : 'Add To Basket'}
                 </button>
               </div>
             </div>

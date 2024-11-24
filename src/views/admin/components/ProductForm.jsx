@@ -105,7 +105,16 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                 </div>
                 &nbsp;
                 <div className="product-form-field">
-                  <CustomCreatableSelect
+                <Field
+                    disabled={isLoading}
+                    name="brand"
+                    type="text"
+                    label="* Brand"
+                    placeholder="Select/Create Brand"
+                    style={{ textTransform: 'capitalize' }}
+                    component={CustomInput}
+                  />
+                  {/* <CustomCreatableSelect
                     defaultValue={{ label: values.brand, value: values.brand }}
                     name="brand"
                     iid="brand"
@@ -113,7 +122,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                     disabled={isLoading}
                     placeholder="Select/Create Brand"
                     label="* Brand"
-                  />
+                  /> */}
                 </div>
               </div>
               <div className="product-form-field">
