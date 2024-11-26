@@ -3,8 +3,6 @@ import {
   DELETE_USER,
   EDIT_USER,
   GET_USER,
-  GET_USERS,
-  GET_USERS_SUCCESS,
   REGISTER_USER,
 } from "@/constants/constants";
 
@@ -17,16 +15,6 @@ export const registerUser = (user) => ({
 export const getUser = (uid) => ({
   type: GET_USER,
   payload: uid,
-});
-
-export const getUsers = (lastRef) => ({
-  type: GET_USERS,
-  payload: lastRef,
-});
-
-export const getUsersSuccess = (users) => ({
-  type: GET_USERS_SUCCESS,
-  payload: users,
 });
 
 // different from registerUser -- only inserted in admins' users array not in profile array

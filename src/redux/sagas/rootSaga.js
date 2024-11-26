@@ -17,7 +17,6 @@ function* rootSaga() {
     ACTION.ON_AUTHSTATE_FAIL,
     ACTION.SET_AUTH_PERSISTENCE,
     ACTION.RESET_PASSWORD,
-    ACTION.GET_USERS
   ], authSaga);
   yield takeLatest([
     ACTION.ADD_PRODUCT,

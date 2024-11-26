@@ -55,8 +55,6 @@ export const CLEAR_RECENT_SEARCH = 'CLEAR_RECENT_SEARCH';
 export const REMOVE_SELECTED_RECENT = 'REMOVE_SELECTED_RECENT';
 
 export const REGISTER_USER = 'REGISTER_USER';
-export const GET_USERS = 'GET_USERS';
-export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
 export const GET_USER = 'GET_USER';
 export const ADD_USER = 'ADD_USER';
 export const DELETE_USER = 'DELETE_USER';
