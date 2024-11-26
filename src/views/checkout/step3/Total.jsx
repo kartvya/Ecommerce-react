@@ -1,15 +1,18 @@
-import { ArrowLeftOutlined, CheckOutlined } from '@ant-design/icons';
-import { CHECKOUT_STEP_2 } from '@/constants/routes';
-import { useFormikContext } from 'formik';
-import { displayMoney } from '@/helpers/utils';
-import PropType from 'prop-types';
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { setPaymentDetails } from '@/redux/actions/checkoutActions';
+import { ArrowLeftOutlined, CheckOutlined } from "@ant-design/icons";
+import { CHECKOUT_STEP_2 } from "@/constants/routes";
+import { useFormikContext } from "formik";
+import { displayMoney } from "@/helpers/utils";
+import PropType from "prop-types";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { setPaymentDetails } from "@/redux/actions/checkoutActions";
+import OrderSuccess from "./OrderSuccess/OrderSuccess";
 
 const Total = ({ isInternational, subtotal }) => {
   const { values, submitForm } = useFormikContext();
+  const [showSuccessOrder, setShowSuccessOrder] = useState(false);
+
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -37,27 +40,30 @@ const Total = ({ isInternational, subtotal }) => {
           type="button"
         >
           <ArrowLeftOutlined />
-          &nbsp;
-          Go Back
+          &nbsp; Go Back
         </button>
         <button
           className="button"
           disabled={false}
-          onClick={submitForm}
+          onClick={() => {
+            submitForm();
+            // history.push(CHECKOUT_STEP_2);
+            setShowSuccessOrder(true)
+          }}
           type="button"
         >
           <CheckOutlined />
-          &nbsp;
-          Confirm
+          &nbsp; Confirm
         </button>
       </div>
+      <OrderSuccess show={showSuccessOrder} onClose={()=>setShowSuccessOrder(false)} />
     </>
   );
 };
 
 Total.propTypes = {
   isInternational: PropType.bool.isRequired,
-  subtotal: PropType.number.isRequired
+  subtotal: PropType.number.isRequired,
 };
 
 export default Total;

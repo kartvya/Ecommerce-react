@@ -42,7 +42,7 @@ const Payment = ({ shipping, payment, subtotal }) => {
   };
 
   const onConfirm = () => {
-    displayActionMessage('Feature not ready yet :)', 'info');
+    // displayActionMessage('Feature not ready yet :)', 'info');
   };
 
   if (!shipping || !shipping.isDone) {
@@ -57,7 +57,7 @@ const Payment = ({ shipping, payment, subtotal }) => {
         validationSchema={FormSchema}
         validate={(form) => {
           if (form.type === 'paypal') {
-            displayActionMessage('Feature not ready yet :)', 'info');
+            // displayActionMessage('Feature not ready yet :)', 'info');
           }
         }}
         onSubmit={onConfirm}
