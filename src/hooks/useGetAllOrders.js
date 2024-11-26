@@ -2,18 +2,18 @@ import { useDidMount } from "@/hooks";
 import { useEffect, useState } from "react";
 import firebase from "@/services/firebase";
 
-const useRecommendedProducts = (itemsCount) => {
-  const [recommendedProducts, setRecommendedProducts] = useState([]);
+const useGetAllOrders = () => {
+  const [allOrders, setAllOrders] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const didMount = useDidMount(true);
 
-  const fetchRecommendedProducts = async () => {
+  const fetchAllOrders = async () => {
     try {
       setLoading(true);
       setError("");
 
-      const docs = await firebase.getRecommendedProducts(itemsCount);
+      const docs = await firebase.getAllUsers();
 
       if (docs.empty) {
         if (didMount) {
@@ -29,7 +29,7 @@ const useRecommendedProducts = (itemsCount) => {
         });
 
         if (didMount) {
-          setRecommendedProducts(items);
+          setAllOrders(items);
           setLoading(false);
         }
       }
@@ -42,17 +42,17 @@ const useRecommendedProducts = (itemsCount) => {
   };
 
   useEffect(() => {
-    if (recommendedProducts.length === 0 && didMount) {
-      fetchRecommendedProducts();
+    if (allOrders.length === 0 && didMount) {
+      fetchAllOrders();
     }
   }, []);
 
   return {
-    recommendedProducts,
-    fetchRecommendedProducts,
+    allOrders,
+    fetchAllOrders,
     isLoading,
     error,
   };
 };
 
-export default useRecommendedProducts;
+export default useGetAllOrders;

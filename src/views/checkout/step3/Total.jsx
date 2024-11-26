@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setPaymentDetails } from "@/redux/actions/checkoutActions";
 import OrderSuccess from "./OrderSuccess/OrderSuccess";
+import { addOrders } from "@/redux/actions/productActions";
 
 const Total = ({ isInternational, subtotal }) => {
   const { values, submitForm } = useFormikContext();
@@ -23,6 +24,17 @@ const Total = ({ isInternational, subtotal }) => {
     dispatch(setPaymentDetails({ ...rest })); // save payment details
     history.push(CHECKOUT_STEP_2);
   };
+
+  const onClickSubmit = () =>{
+    try {
+      submitForm().then(()=>{
+        setShowSuccessOrder(true)
+        dispatch(addOrders(product));
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <>
@@ -45,11 +57,7 @@ const Total = ({ isInternational, subtotal }) => {
         <button
           className="button"
           disabled={false}
-          onClick={() => {
-            submitForm();
-            // history.push(CHECKOUT_STEP_2);
-            setShowSuccessOrder(true)
-          }}
+          onClick={onClickSubmit}
           type="button"
         >
           <CheckOutlined />

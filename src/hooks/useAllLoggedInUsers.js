@@ -2,18 +2,18 @@ import { useDidMount } from "@/hooks";
 import { useEffect, useState } from "react";
 import firebase from "@/services/firebase";
 
-const useRecommendedProducts = (itemsCount) => {
-  const [recommendedProducts, setRecommendedProducts] = useState([]);
+const useAllLoggedInUsers = () => {
+  const [loggedInUsers, setLoggedInUser] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const didMount = useDidMount(true);
 
-  const fetchRecommendedProducts = async () => {
+  const fetchLoggedInUsers = async () => {
     try {
       setLoading(true);
       setError("");
 
-      const docs = await firebase.getRecommendedProducts(itemsCount);
+      const docs = await firebase.getAllUsers();
 
       if (docs.empty) {
         if (didMount) {
@@ -29,7 +29,7 @@ const useRecommendedProducts = (itemsCount) => {
         });
 
         if (didMount) {
-          setRecommendedProducts(items);
+          setLoggedInUser(items);
           setLoading(false);
         }
       }
@@ -42,17 +42,17 @@ const useRecommendedProducts = (itemsCount) => {
   };
 
   useEffect(() => {
-    if (recommendedProducts.length === 0 && didMount) {
-      fetchRecommendedProducts();
+    if (loggedInUsers.length === 0 && didMount) {
+      fetchLoggedInUsers();
     }
   }, []);
 
   return {
-    recommendedProducts,
-    fetchRecommendedProducts,
+    loggedInUsers,
+    fetchLoggedInUsers,
     isLoading,
     error,
   };
 };
 
-export default useRecommendedProducts;
+export default useAllLoggedInUsers;

@@ -262,6 +262,9 @@ class Firebase {
     this.db.collection("products").doc(id).update(updates);
 
   removeProduct = (id) => this.db.collection("products").doc(id).delete();
+
+  getAllUsers = () =>
+    this.db.collection("users").where("role", "!=", "ADMIN").get();
 }
 
 const firebaseInstance = new Firebase();
