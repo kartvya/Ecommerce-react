@@ -4,31 +4,40 @@ import { useSelector } from "react-redux";
 import { selectFilter } from "@/selectors/selector";
 import {
   useDocumentTitle,
-  useFeaturedProducts,
-  useRecommendedProducts,
   useScrollTop,
   useAllLoggedInUsers
 } from "@/hooks";
+import { UserList } from "@/components/common";
+
+
 
 const Dashboard = () => {
   useDocumentTitle('User List');
   useScrollTop();
-  const {
-    loggedInUsers,
-    fetchLoggedInUsers,
-    isLoading,
-    error,
-  } = useAllLoggedInUsers()
+  const { loggedInUsers, isLoading, error } = useAllLoggedInUsers();
+
+  const dashboardStyle = {
+    padding: "20px",
+    fontFamily: "Arial, sans-serif",
+  };
+
+  const headingStyle = {
+    fontSize: "1.5rem",
+    marginBottom: "20px",
+  };
+
+  const errorStyle = {
+    color: "red",
+  };
 
   return (
     <Boundary>
-      <div className="loader">
-        <h2>Users</h2>
+      <div style={dashboardStyle}>
+        <h2 style={headingStyle}>Users</h2>
+        {isLoading && <p>Loading...</p>}
+        {error && <p style={errorStyle}>{error}</p>}
+        {loggedInUsers && <UserList users={loggedInUsers} />}
       </div>
-      {/* <div className="product-admin-items">
-        <UserList {...store}>
-        </UserList>
-      </div> */}
     </Boundary>
   );
 };
