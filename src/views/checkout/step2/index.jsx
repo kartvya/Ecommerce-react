@@ -26,14 +26,14 @@ const FormSchema = Yup.object().shape({
     .required('Email is required.'),
   address: Yup.string()
     .required('Shipping address is required.'),
-  mobile: Yup.object()
-    .shape({
-      country: Yup.string(),
-      countryCode: Yup.string(),
-      dialCode: Yup.string().required('Mobile number is required'),
-      value: Yup.string().required('Mobile number is required')
-    })
-    .required('Mobile number is required.'),
+  // mobile: Yup.object()
+  //   .shape({
+  //     country: Yup.string(),
+  //     countryCode: Yup.string(),
+  //     dialCode: Yup.string().required('Mobile number is required'),
+  //     value: Yup.string().required('Mobile number is required')
+  //   })
+  //   .required('Mobile number is required.'),
   isInternational: Yup.boolean(),
   isDone: Yup.boolean()
 });
@@ -48,7 +48,7 @@ const ShippingDetails = ({ profile, shipping, subtotal }) => {
     fullname: shipping.fullname || profile.fullname || '',
     email: shipping.email || profile.email || '',
     address: shipping.address || profile.address || '',
-    mobile: shipping.mobile || profile.mobile || {},
+    // mobile: shipping.mobile || profile.mobile || {},
     isInternational: shipping.isInternational || false,
     isDone: shipping.isDone || false
   };
@@ -58,7 +58,7 @@ const ShippingDetails = ({ profile, shipping, subtotal }) => {
       fullname: form.fullname,
       email: form.email,
       address: form.address,
-      mobile: form.mobile,
+      // mobile: form.mobile,
       isInternational: form.isInternational,
       isDone: true
     }));
