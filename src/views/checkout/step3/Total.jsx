@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 import { setPaymentDetails } from "@/redux/actions/checkoutActions";
 import OrderSuccess from "./OrderSuccess/OrderSuccess";
 import { addOrders } from "@/redux/actions/productActions";
+import { clearBasket } from "@/redux/actions/basketActions";
 
 const Total = ({ isInternational, subtotal }) => {
   const { values, submitForm } = useFormikContext();
@@ -25,16 +26,16 @@ const Total = ({ isInternational, subtotal }) => {
     history.push(CHECKOUT_STEP_2);
   };
 
-  const onClickSubmit = () =>{
+  const onClickSubmit = () => {
     try {
-      submitForm().then(()=>{
-        setShowSuccessOrder(true)
-        dispatch(addOrders(product));
-      })
+      submitForm().then(() => {
+        setShowSuccessOrder(true);
+        // dispatch(addOrders(product));
+      });
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <>
@@ -64,7 +65,13 @@ const Total = ({ isInternational, subtotal }) => {
           &nbsp; Confirm
         </button>
       </div>
-      <OrderSuccess show={showSuccessOrder} onClose={()=>setShowSuccessOrder(false)} />
+      <OrderSuccess
+        show={showSuccessOrder}
+        onClose={() => {
+          setShowSuccessOrder(false);
+          dispatch(clearBasket());
+        }}
+      />
     </>
   );
 };

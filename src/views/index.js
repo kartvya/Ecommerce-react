@@ -5,6 +5,7 @@ export { default as Dashboard } from './admin/dashboard';
 export { default as EditProduct } from './admin/edit_product';
 export { default as Products } from './admin/products';
 export { default as Users } from './admin/users';
+export { default as Orders } from './admin/orders';
 export { default as ForgotPassword } from './auth/forgot_password';
 export { default as SignIn } from './auth/signin';
 export { default as SignUp } from './auth/signup';
