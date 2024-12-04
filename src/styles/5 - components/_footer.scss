@@ -1,6 +1,6 @@
 .footer {
   position: relative;
-  padding: 0 $xxl-size;
+  padding: 2rem;
   margin-top: $xl-size;
   background: $off-white;
   display: flex;
@@ -20,8 +20,8 @@
 }
 
 .footer-logo {
-  width: 15rem;
-  height: 6rem;
+  width: 10rem;
+  height: 5rem;
   object-fit: contain;
 }
 
@@ -36,9 +36,9 @@
 }
 
 .footer-col-2 {
-  padding: 3rem 0;
+  // padding: 3rem 0;
   text-align: center;
-  flex-basis: 20%;
+  // flex-basis: 20%;
 
   @include mobile {
     flex-basis: none;

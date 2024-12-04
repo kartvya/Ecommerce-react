@@ -25,7 +25,7 @@ const Footer = () => {
       </div>
       <div className="footer-col-2">
         <img alt="Footer logo" className="footer-logo" src={logo} />
-        <h5>
+        <h5 style={{ margin: 0}}>
           &copy;&nbsp;
           {new Date().getFullYear()}
         </h5>
