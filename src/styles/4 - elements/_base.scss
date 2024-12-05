@@ -1,6 +1,8 @@
 // 
 // BASE STYLING ---------
 //
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -11,7 +13,10 @@ html {
 
 body {
   min-height: 100vh;
-  font-family: 'Tajawal', Helvetica, Arial, sans-serif;
+  // font-family: 'Tajawal', Helvetica, Arial, sans-serif;
+  // font-family: monospace;
+  // font-family: url("https://fonts.google.com/specimen/Roboto+Mono");
+  font-family: 'Roboto Mono', monospace;
   font-size: $baseFontSize;
   background: $background-color;
   font-weight: bold;
@@ -48,7 +53,7 @@ h3,
 h4, 
 h5,
 h6 {
-  font-family: 'Tajawal', Helvetica, Arial, sans-serif;
+  // font-family: 'Tajawal', Helvetica, Arial, sans-serif;
   color: $heading-color;
 }
 

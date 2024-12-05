@@ -50,7 +50,7 @@ const Home = () => {
               app brings you the best deals and a seamless shopping experience.
             </p>
             <br />
-            <Link to={SHOP} className="button">
+            <Link to={SHOP} className="button" style={{borderRadius: "8px"}}>
               Shop Now &nbsp;
               <ArrowRightOutlined />
             </Link>

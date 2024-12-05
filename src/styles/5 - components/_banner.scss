@@ -27,7 +27,7 @@
     h1 {
         font-size: 4.8rem;
         margin-bottom: 1rem;
-        width: 80%;
+        width: 90%;
 
         @include mobile {
             width: 100%;
@@ -35,6 +35,8 @@
     }
 
     p {
+        font-size: 18px;
+        font-weight: 500;
         text-align: justify;
         width: 100%;
         max-width: 500px;
